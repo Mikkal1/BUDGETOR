@@ -1,4 +1,5 @@
 -- Database setup
+DROP DATABASE IF EXISTS budgetor_db;
 CREATE DATABASE budgetor_db;
 
 USE budgetor_db;
