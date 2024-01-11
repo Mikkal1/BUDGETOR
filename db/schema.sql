@@ -20,6 +20,7 @@ CREATE TABLE Categories (
     name VARCHAR(100) NOT NULL,
     user_id INT,
     FOREIGN KEY (user_id) REFERENCES Users(id)
+);
 
 -- Creates an Expenses table
 CREATE TABLE Expenses (
