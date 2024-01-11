@@ -14,6 +14,13 @@ CREATE TABLE Users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Creates a Categories table
+CREATE TABLE Categories (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES Users(id)
+
 -- Creates an Expenses table
 CREATE TABLE Expenses (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -26,7 +33,7 @@ CREATE TABLE Expenses (
     FOREIGN KEY (user_id) REFERENCES Users(id)
 );
 
--- Creates a Incomes table
+-- Creates an Incomes table
 CREATE TABLE Incomes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     source VARCHAR(100) NOT NULL,
