@@ -1,0 +1,16 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .savings-goals {
+    border: 1px solid #000;
+    margin-bottom: 20px;
+  }
+  .savings-tips {
+    border: 1px solid #000;
+    margin-bottom: 20px;
+  }
+

@@ -1,5 +1,9 @@
 const express = require('express');
-const sequelize = require('./path/to/your/sequelize/config'); // Add my actual path to Sequelize configuration
+const mysql = require('mysql');
+const Sequelize = require('sequelize');
+const exphbs = require('express-handlebars');
+
+const sequelize = require('./config/connection.js'); 
 
 const app = express();
 
@@ -22,3 +26,21 @@ app.use((err, req, res, next) => {
 // Start server
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, console.log(`Server started on port ${PORT}`));
+
+const db = mysql.createConnection( 
+{
+  host: 'localhost',
+  user: 'root',
+  password: 'password',
+  database: 'budgetor_db'
+},
+console.log('Connected to the budgetor_db database.')
+);
+
+db.connect(err => {
+  if (err) {
+    console.error('Error connecting to the budgetor_db database: ' + err.stack);
+    return;
+  }
+  console.log('Connected to the budgetor_db database.');
+});

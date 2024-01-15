@@ -1,11 +1,11 @@
--- Database setup
+
 DROP DATABASE IF EXISTS budgetor_db;
 CREATE DATABASE budgetor_db;
 
 USE budgetor_db;
 
 SELECT DATABASE();
--- Creates a Users table
+
 CREATE TABLE Users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
@@ -14,7 +14,7 @@ CREATE TABLE Users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Creates a Categories table
+
 CREATE TABLE Categories (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -22,20 +22,18 @@ CREATE TABLE Categories (
     FOREIGN KEY (user_id) REFERENCES Users(id)
 );
 
--- Creates an Expenses table
-CREATE TABLE Expenses (
+CREATE TABLE Savings (
     id INT AUTO_INCREMENT PRIMARY KEY,
     description VARCHAR(255),
     amount DECIMAL(10, 2) NOT NULL,
     date DATE NOT NULL,
-    category_id INT,
+    goal DECIMAL(10, 2),  -- Optional field for setting a savings goal
     user_id INT,
-    FOREIGN KEY (category_id) REFERENCES Categories(id),
     FOREIGN KEY (user_id) REFERENCES Users(id)
 );
 
--- Creates an Incomes table
-CREATE TABLE Incomes (
+
+CREATE TABLE Income (
     id INT AUTO_INCREMENT PRIMARY KEY,
     source VARCHAR(100) NOT NULL,
     amount DECIMAL(10, 2) NOT NULL,
