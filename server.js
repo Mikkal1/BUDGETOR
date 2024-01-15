@@ -1,5 +1,5 @@
 const express = require('express');
-const sequelize = require('./path/to/your/sequelize/config'); // Add my actual path to Sequelize configuration
+const sequelize = require('./config/connection'); // Add my actual path to Sequelize configuration
 
 const app = express();
 
@@ -12,7 +12,7 @@ sequelize.authenticate()
   .catch(err => console.log('Error: ' + err))
 
 // Define routes
-app.get('/', (req, res) => res.send('Welcome to the Budgetor API!'));
+app.get('/', (req, res) => res.sendFile(__dirname + '/Mainpage.html'));
 
 // Error handling
 app.use((err, req, res, next) => {
