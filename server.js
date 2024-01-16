@@ -8,6 +8,8 @@ const app = express();
 // Middlewares
 app.use(express.json()); // for parsing application/json
 
+app.use (express.static ('public'));
+
 // Database connection
 sequelize.authenticate()
   .then(() => console.log('Database connected...'))
