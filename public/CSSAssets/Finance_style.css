@@ -1,0 +1,61 @@
+body {
+  background-color: #ffffff; 
+}
+
+.container {
+  background-color: navy;
+  color: white;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 600px; 
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.spendingContainer,
+.balanceContainer {
+  background-color: navy;
+  color: white;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 600px; 
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.mainTitle h1 {
+  color: orange;
+}
+
+.balanceContainer h2 {
+  color: orange; 
+}
+
+.mainTitle,
+.spendingContainer,
+.container,
+.balanceContainer {
+  text-align: center;
+}
+
+h1, h2, h3, h4 {
+  color: #fff;
+}
+
+input,
+select,
+button {
+  padding: 8px;
+  border: none;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 5px;
+}
