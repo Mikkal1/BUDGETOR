@@ -63,7 +63,6 @@ function saveToStorage() {
 function loadFromStorage() {
     var purchases = JSON.parse(localStorage.getItem('purchases')) || [];
 
-    var purchaseList = document.getElementById('purchaseList');
     var monthlyTotalElement = document.getElementById('monthlyTotal');
     var monthlyTotal = 0;
 
@@ -84,6 +83,7 @@ function monthlyReset() {
 }
 
 
+//expenses and income feature
 
 let incomeList = JSON.parse(localStorage.getItem('incomeList')) || [];
 let expensesList = JSON.parse(localStorage.getItem('expensesList')) || [];
@@ -92,6 +92,7 @@ let expensesTotal = parseFloat(localStorage.getItem('expensesTotal')) || 0;
 
 document.addEventListener('DOMContentLoaded', () => {
     updateUI();
+    balanceHealth();
 });
 
 function submitTransaction() {
@@ -125,6 +126,7 @@ function updateUI() {
     document.getElementById('expenses-list').innerHTML = generateListHTML(expensesList);
     document.getElementById('income-total-value').textContent = incomeTotal.toFixed(2);
     document.getElementById('expenses-total-value').textContent = expensesTotal.toFixed(2);
+    balanceHealth();
 }
 
 function generateListHTML(transactionList) {
@@ -137,4 +139,16 @@ function monthlyReset() {
         localStorage.clear();
         updateUI();
     }
+}
+
+
+//budgeting tracker
+
+function balanceHealth() {
+    let currentBalanceElement = document.getElementById('monthly-balance');
+    let monthlyTotalElement = document.getElementById('monthlyTotal');
+    let monthlyTotal = parseFloat(monthlyTotalElement.textContent) || 0;
+
+    let balance = incomeTotal - expensesTotal - monthlyTotal;
+    currentBalanceElement.textContent = balance.toFixed(2);
 }
