@@ -113,5 +113,3 @@ function resetInvestmentForm() {
 }
 
 
-//Compound interest calculator
-

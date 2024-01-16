@@ -1,5 +1,6 @@
 const express = require('express');
 const Sequelize = require('sequelize');
+const cors = require('cors'); 
 
 const sequelize = require('./config/connection.js'); 
 
@@ -24,6 +25,16 @@ app.use((err, req, res, next) => {
   res.status(500).send('Something broke!');
 });
 
+app.use(cors());
+
+app.post('/calculate', (req, res) => {
+  const { rate, compoundings, principal, periods } = req.body;
+  const financeCalculator = new finance();
+  const result = financeCalculator.CI(rate, compoundings, principal, periods);
+  res.json({ result });
+});
+
 // Start server
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+
