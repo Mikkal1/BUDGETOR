@@ -15,7 +15,7 @@ body {
 
 h1 {
   color: orange;
-  text-align: center; /* Center the title */
+  text-align: center;
 }
 
 h2 {
@@ -36,16 +36,16 @@ h2 {
 }
 
 .savings-tips {
-  background-color: #001f3f; /* Orange */
+  background-color: #001f3f;
 }
 
 .CIcontainer {
-  background-color: #001f3f; /* Dark Navy */
+  background-color: #001f3f;
   color: #fff;
 }
 
 .savingGoalContainer {
-  background-color: #001f3f; /* Orange */
+  background-color: #001f3f;
 }
 
 form {
@@ -55,7 +55,7 @@ form {
 label {
   display: block;
   margin-bottom: 5px;
-  color: white; /* Set label text color to white */
+  color: white;
 }
 
 input,
@@ -65,11 +65,11 @@ select {
   margin-bottom: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  color: #333; /* Set input and select text color to a dark color (adjust as needed) */
+  color: #333;
 }
 
 button {
-  background-color: #001f3f; /* Dark Navy */
+  background-color: #001f3f;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -78,5 +78,5 @@ button {
 }
 
 button:hover {
-  background-color: #003366; /* Slightly darker navy on hover */
+  background-color: #003366;
 }
