@@ -1,78 +1,140 @@
-let monthlySpending = JSON.parse(localStorage.getItem('monthlySpending')) || [];
-        let spendingTitles = JSON.parse(localStorage.getItem('spendingTitles')) || [];
-        let totalSpending = parseFloat(localStorage.getItem('totalSpending')) || 0;
+// Spontaneous Spending Tracker
 
-        function addSpending() {
-            const amountInput = document.getElementById('amount');
-            const amount = parseFloat(amountInput.value);
+document.addEventListener('DOMContentLoaded', function () {
+    loadFromStorage();
+});
 
-            if (!isNaN(amount) && amount > 0) {
-                monthlySpending.push(amount);
+function addPurchase() {
+    var nameInput = document.getElementById('purchaseName');
+    var amountInput = document.getElementById('purchaseAmount');
 
-                totalSpending += amount;
+    var name = nameInput.value.trim();
+    var amount = parseFloat(amountInput.value);
 
-                updateUI();
-                saveDataToLocalStorage();
+    if (name === '' || isNaN(amount) || amount <= 0) {
+        alert('Please enter valid purchase details.');
+        return;
+    }
 
-                amountInput.value = '';
-            } else {
-                alert('Please enter a valid amount greater than 0.');
-            }
-        }
+    var purchase = {
+        name: name,
+        amount: amount
+    };
 
-        function assignTitle() {
-            const titleInput = document.getElementById('item');
+    addPurchaseToList(purchase);
 
-            if (titleInput.value !== '') {
-                spendingTitles.push(titleInput.value);
+    updateMonthlyTotal(amount);
 
-                updateUI();
-                saveDataToLocalStorage();
+    nameInput.value = '';
+    amountInput.value = '';
 
-                titleInput.value = '';
-            } else {
-                alert('Please provide a valid entry');
-            }
-        }
+    saveToStorage();
+}
 
-        function addAndAssign() {
-            addSpending();
-            assignTitle();
-        }
+function addPurchaseToList(purchase) {
+    var purchaseList = document.getElementById('purchaseList');
+    var listItem = document.createElement('li');
+    listItem.textContent = purchase.name + ': $' + purchase.amount.toFixed(2);
+    purchaseList.appendChild(listItem);
+}
 
-        function updateUI() {
-            const listContainer = document.getElementById('list');
-            const totalContainer = document.getElementById('total');
+function updateMonthlyTotal(amount) {
+    var monthlyTotalElement = document.getElementById('monthlyTotal');
+    var currentTotal = parseFloat(monthlyTotalElement.textContent);
+    var newTotal = currentTotal + amount;
+    monthlyTotalElement.textContent = newTotal.toFixed(2);
+}
 
-            listContainer.innerHTML = '';
+function saveToStorage() {
+    var purchases = [];
+    var purchaseList = document.getElementById('purchaseList');
+    var listItems = purchaseList.getElementsByTagName('li');
 
-            for (let i = 0; i < monthlySpending.length; i++) {
-                const listItem = document.createElement('li');
-                const titleValue = spendingTitles[i] || 'No Title';
-                const amount = monthlySpending[i];
-                listItem.textContent = `${titleValue}: $${amount.toFixed(2)}`;
-                listContainer.appendChild(listItem);
-            }
+    for (var i = 0; i < listItems.length; i++) {
+        var purchaseText = listItems[i].textContent;
+        var name = purchaseText.split(':')[0].trim();
+        var amount = parseFloat(purchaseText.split('$')[1]);
+        purchases.push({ name: name, amount: amount });
+    }
 
-            totalContainer.textContent = totalSpending.toFixed(2);
-        }
+    localStorage.setItem('purchases', JSON.stringify(purchases));
+}
 
-        function saveDataToLocalStorage() {
-            localStorage.setItem('monthlySpending', JSON.stringify(monthlySpending));
-            localStorage.setItem('spendingTitles', JSON.stringify(spendingTitles));
-            localStorage.setItem('totalSpending', totalSpending);
-        }
+function loadFromStorage() {
+    var purchases = JSON.parse(localStorage.getItem('purchases')) || [];
 
-        function monthlyReset() {
-            const currentDate = new Date();
-            if (currentDate.getDate() === 1) {
-                localStorage.clear();
-                monthlySpending = [];
-                spendingTitles = [];
-                totalSpending = 0;
-                updateUI();
-            }
-        }
+    var purchaseList = document.getElementById('purchaseList');
+    var monthlyTotalElement = document.getElementById('monthlyTotal');
+    var monthlyTotal = 0;
 
-        monthlyReset();
+    purchases.forEach(function (purchase) {
+        addPurchaseToList(purchase);
+        monthlyTotal += purchase.amount;
+    });
+
+    monthlyTotalElement.textContent = monthlyTotal.toFixed(2);
+}
+
+function monthlyReset() {
+    const currentDate = new Date();
+    if (currentDate.getDate() === 1) {
+        localStorage.clear();
         updateUI();
+    }
+}
+
+
+
+let incomeList = JSON.parse(localStorage.getItem('incomeList')) || [];
+let expensesList = JSON.parse(localStorage.getItem('expensesList')) || [];
+let incomeTotal = parseFloat(localStorage.getItem('incomeTotal')) || 0;
+let expensesTotal = parseFloat(localStorage.getItem('expensesTotal')) || 0;
+
+document.addEventListener('DOMContentLoaded', () => {
+    updateUI();
+});
+
+function submitTransaction() {
+    const transactionType = document.getElementById('transaction-type').value;
+    const transactionName = document.getElementById('transaction-name').value;
+    const transactionAmount = parseFloat(document.getElementById('transaction-amount').value);
+
+    if (transactionName && !isNaN(transactionAmount) && transactionAmount > 0) {
+        const transaction = { name: transactionName, amount: transactionAmount };
+
+        if (transactionType === 'income') {
+            incomeList.push(transaction);
+            incomeTotal += transactionAmount;
+            localStorage.setItem('incomeList', JSON.stringify(incomeList));
+            localStorage.setItem('incomeTotal', incomeTotal.toString());
+        } else {
+            expensesList.push(transaction);
+            expensesTotal += transactionAmount;
+            localStorage.setItem('expensesList', JSON.stringify(expensesList));
+            localStorage.setItem('expensesTotal', expensesTotal.toString());
+        }
+
+        updateUI();
+    } else {
+        alert('Please enter valid transaction details.');
+    }
+}
+
+function updateUI() {
+    document.getElementById('income-list').innerHTML = generateListHTML(incomeList);
+    document.getElementById('expenses-list').innerHTML = generateListHTML(expensesList);
+    document.getElementById('income-total-value').textContent = incomeTotal.toFixed(2);
+    document.getElementById('expenses-total-value').textContent = expensesTotal.toFixed(2);
+}
+
+function generateListHTML(transactionList) {
+    return transactionList.map(transaction => `<li>${transaction.name}: $${transaction.amount.toFixed(2)}</li>`).join('');
+}
+
+function monthlyReset() {
+    const currentDate = new Date();
+    if (currentDate.getDate() === 1) {
+        localStorage.clear();
+        updateUI();
+    }
+}
