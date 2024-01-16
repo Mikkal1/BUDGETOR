@@ -1,4 +1,18 @@
+//saving goals
+
 let goals = [];
+
+document.addEventListener('DOMContentLoaded', () => {
+    const savedGoals = localStorage.getItem('goals');
+    if (savedGoals) {
+        goals = JSON.parse(savedGoals);
+        updateGoalList();
+    }
+});
+
+function saveGoalsToLocalStorage() {
+    localStorage.setItem('goals', JSON.stringify(goals));
+}
 
 function createGoal() {
     const goalName = document.getElementById('goal-name').value;
@@ -13,6 +27,8 @@ function createGoal() {
 
     updateGoalList();
     resetGoalForm();
+
+    saveGoalsToLocalStorage();
 }
 
 function trackInvestment() {
@@ -33,6 +49,8 @@ function trackInvestment() {
 
     updateGoalList();
     resetInvestmentForm();
+
+    saveGoalsToLocalStorage();
 }
 
 function updateGoalList() {
@@ -53,6 +71,8 @@ function updateGoalList() {
         }
         updateProgressBar(index);
     });
+
+    saveGoalsToLocalStorage();
 }
 
 function createGoalContainer(index) {
@@ -91,3 +111,7 @@ function resetGoalForm() {
 function resetInvestmentForm() {
     document.getElementById('investment-amount').value = "";
 }
+
+
+//Compound interest calculator
+

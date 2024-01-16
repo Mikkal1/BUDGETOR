@@ -18,38 +18,33 @@
       rule, you can budget effectively without compromising your financial goals.</p>
   </div>
 
-  <div class="savingGoalContainer">
-    <div id="goal-form">
-      <h2>Create Savings Goal</h2>
-      <label for="goal-name">Goal Name:</label>
-      <input type="text" id="goal-name" placeholder="Enter goal name">
-
-      <label for="goal-value">Goal Value ($):</label>
-      <input type="number" id="goal-value" placeholder="Enter goal value">
-
-      <button onclick="createGoal()">Create Goal</button>
+  <div id="savingGoals" class="savingGoalContainer">
+      <div id="goal-form">
+        <h2>Create Savings Goal</h2>
+        <label for="goal-name">Goal Name:</label>
+        <input type="text" id="goal-name" placeholder="Enter goal name">
+    
+        <label for="goal-value">Goal Value ($):</label>
+        <input type="number" id="goal-value" placeholder="Enter goal value">
+    
+        <button onclick="createGoal()">Create Goal</button>
+      </div>
+    
+      <div id="investment-form">
+        <h2>Track Investments</h2>
+        <label for="investment-amount">Investment Amount ($):</label>
+        <input type="number" id="investment-amount" placeholder="Enter investment amount">
+    
+        <label for="goal-list">Select Goal:</label>
+        <select id="goal-list"></select>
+    
+        <button onclick="trackInvestment()">Track Investment</button>
+      </div>
     </div>
 
-    <div id="investment-form">
-      <h2>Track Investments</h2>
-      <label for="investment-amount">Investment Amount ($):</label>
-      <input type="number" id="investment-amount" placeholder="Enter investment amount">
+ 
 
-      <label for="goal-list">Select Goal:</label>
-      <select id="goal-list"></select>
-
-      <button onclick="trackInvestment()">Track Investment</button>
-    </div>
-
-    
-  </div>
-
-  <div class="interestContainer">
-    
-
-  </div>
-
-<script src="./JSAssets/savings.js"></script>
+  <script src="./JSAssets/savings.js"></script>
 </body>
 
 </html>
