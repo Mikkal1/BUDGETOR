@@ -1,0 +1,82 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: orange;
+  text-align: center;
+}
+
+h2 {
+  color: white;
+}
+
+.tipText {
+  color: white;
+}
+
+.savings-tips,
+.CIcontainer,
+.savingGoalContainer {
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.savings-tips {
+  background-color: #001f3f;
+}
+
+.CIcontainer {
+  background-color: #001f3f;
+  color: #fff;
+}
+
+.savingGoalContainer {
+  background-color: #001f3f;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: white;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: #333;
+}
+
+button {
+  background-color: #001f3f;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #003366;
+}
