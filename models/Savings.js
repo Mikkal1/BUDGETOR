@@ -1,14 +1,14 @@
 const Sequelize = require('sequelize'); 
 
 const Savings = sequelize.define('Savings', {
-  // Assuming an auto-generated ID
+
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
     primaryKey: true
   },
   amount: {
-    type: Sequelize.DECIMAL(10, 2), // Adjust the precision as needed
+    type: Sequelize.DECIMAL(10, 2), 
     allowNull: false
   },
   description: {
