@@ -1,16 +1,82 @@
 body {
-    font-family: Arial, sans-serif;
-  }
-  .container {
-    width: 80%;
-    margin: 0 auto;
-  }
-  .savings-goals {
-    border: 1px solid #000;
-    margin-bottom: 20px;
-  }
-  .savings-tips {
-    border: 1px solid #000;
-    margin-bottom: 20px;
-  }
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+}
 
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: orange;
+  text-align: center; /* Center the title */
+}
+
+h2 {
+  color: white;
+}
+
+.tipText {
+  color: white;
+}
+
+.savings-tips,
+.CIcontainer,
+.savingGoalContainer {
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.savings-tips {
+  background-color: #001f3f; /* Orange */
+}
+
+.CIcontainer {
+  background-color: #001f3f; /* Dark Navy */
+  color: #fff;
+}
+
+.savingGoalContainer {
+  background-color: #001f3f; /* Orange */
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: white; /* Set label text color to white */
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: #333; /* Set input and select text color to a dark color (adjust as needed) */
+}
+
+button {
+  background-color: #001f3f; /* Dark Navy */
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #003366; /* Slightly darker navy on hover */
+}

@@ -13,38 +13,58 @@
 
   <div class="savings-tips">
     <h2>Saving Tips</h2>
-    <p>The 50/30/20 rule is a simple budgeting framework that suggests spending 50% of your after-tax income on needs,
+    <p class="tipText">The 50/30/20 rule is a simple budgeting framework that suggests spending 50% of your after-tax income on needs,
       30% on wants, and allocating at least 20% to savings and debt repayment. By keeping your savings in line with this
       rule, you can budget effectively without compromising your financial goals.</p>
   </div>
 
+  <div class="CIcontainer">
+    <h2>Compound Interest Calculator</h2>
+    <form id="calculatorForm">
+      <label for="rate">Rate:</label>
+      <input type="number" step="0.01" name="rate" required><br>
+
+      <label for="compoundings">Compoundings per Period:</label>
+      <input type="number" name="compoundings" required><br>
+
+      <label for="principal">Principal:</label>
+      <input type="number" name="principal" required><br>
+
+      <label for="periods">Number of Periods:</label>
+      <input type="number" name="periods" required><br>
+
+      <button type="button" onclick="calculate()">Calculate</button>
+    </form>
+
+    <div id="result"></div>
+  </div>
+
   <div id="savingGoals" class="savingGoalContainer">
-      <div id="goal-form">
-        <h2>Create Savings Goal</h2>
-        <label for="goal-name">Goal Name:</label>
-        <input type="text" id="goal-name" placeholder="Enter goal name">
-    
-        <label for="goal-value">Goal Value ($):</label>
-        <input type="number" id="goal-value" placeholder="Enter goal value">
-    
-        <button onclick="createGoal()">Create Goal</button>
-      </div>
-    
-      <div id="investment-form">
-        <h2>Track Investments</h2>
-        <label for="investment-amount">Investment Amount ($):</label>
-        <input type="number" id="investment-amount" placeholder="Enter investment amount">
-    
-        <label for="goal-list">Select Goal:</label>
-        <select id="goal-list"></select>
-    
-        <button onclick="trackInvestment()">Track Investment</button>
-      </div>
+    <div id="goal-form">
+      <h2>Create Savings Goal</h2>
+      <label for="goal-name">Goal Name:</label>
+      <input type="text" id="goal-name" placeholder="Enter goal name">
+
+      <label for="goal-value">Goal Value ($):</label>
+      <input type="number" id="goal-value" placeholder="Enter goal value">
+
+      <button onclick="createGoal()">Create Goal</button>
     </div>
 
- 
+    <div id="investment-form">
+      <h2>Track Investments</h2>
+      <label for="investment-amount">Investment Amount ($):</label>
+      <input type="number" id="investment-amount" placeholder="Enter investment amount">
+
+      <label for="goal-list">Select Goal:</label>
+      <select id="goal-list"></select>
+
+      <button onclick="trackInvestment()">Track Investment</button>
+    </div>
+  </div>
 
   <script src="./JSAssets/savings.js"></script>
+  <script src="./main.js"></script>
 </body>
 
 </html>
